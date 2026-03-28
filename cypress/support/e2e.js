@@ -15,3 +15,7 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+
+// Import commands e2e:
+import './fretes/frete'
+import './login/login'
