@@ -14,3 +14,4 @@ describe("Validar fretes - mobile", () => {
   });
 });
 
+automaçãofi
