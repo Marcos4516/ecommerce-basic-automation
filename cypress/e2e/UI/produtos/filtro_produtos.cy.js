@@ -12,21 +12,66 @@ describe("Validar filtros de produtos - desktop", () => {
     });
   });
 
-  it("filtrar por preço maior", () => {});
+  it("filtrar por preço maior", () => {
+    cy.filterProducts({
+      preco: "maior",
+    });
+  });
 
-  it("filtrar por preço menor", () => {});
+  it("filtrar por preço menor", () => {
+    cy.filterProducts({
+      preco: "menor",
+    });
+  });
 
-  it("filtrar por A a Z", () => {});
+  it("filtrar por A a Z", () => {
+    cy.filterProducts({
+      ordem: "AZ",
+    });
+  });
 
-  it("filtrar por Z a A", () => {});
+  it("filtrar por Z a A", () => {
+    cy.filterProducts({
+      ordem: "ZA",
+    });
+  });
 });
 
 describe("Validar filtros de produtos - mobile", () => {
-  it("filtrar por preço maior", () => {});
+  const usuario = Cypress.env("user");
+  const senha = Cypress.env("password");
 
-  it("filtrar por preço menor", () => {});
+  beforeEach(() => {
+    cy.clearCookies();
+    cy.clearLocalStorage();
+    cy.loginUser({
+      user: usuario,
+      password: senha,
+      versao: "mobile",
+    });
+  });
 
-  it("filtrar por A a Z", () => {});
+  it("filtrar por preço maior", () => {
+    cy.filterProducts({
+      preco: "maior",
+    });
+  });
 
-  it("filtrar por Z a A", () => {});
+  it("filtrar por preço menor", () => {
+    cy.filterProducts({
+      preco: "menor",
+    });
+  });
+
+  it("filtrar por A a Z", () => {
+    cy.filterProducts({
+      ordem: "AZ",
+    });
+  });
+
+  it("filtrar por Z a A", () => {
+    cy.filterProducts({
+      ordem: "ZA",
+    });
+  });
 });
