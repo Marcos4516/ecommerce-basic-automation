@@ -11,7 +11,7 @@ describe("Validar fretes - desktop", () => {
     });
   });
 
-  it.only("validar shipping", () => {
+  it("validar shipping", () => {
     cy.validateShippingFlow({
       validar: "frete",
       nome: "Marcos",
@@ -20,7 +20,7 @@ describe("Validar fretes - desktop", () => {
     });
   });
 
-  it.only("validar price", () => {
+  it("validar price", () => {
     cy.validateShippingFlow({
       validar: "preço",
       nome: "Marcos",
@@ -31,7 +31,34 @@ describe("Validar fretes - desktop", () => {
 });
 
 describe("Validar fretes - mobile", () => {
-  it("validar shipping", () => {});
+  const usuario = Cypress.env("user");
+  const senha = Cypress.env("password");
 
-  it("validar price", () => {});
+  beforeEach(() => {
+    cy.clearCookies();
+    cy.clearLocalStorage();
+    cy.loginUser({
+      user: usuario,
+      password: senha,
+      versao: "mobile",
+    });
+  });
+
+  it("validar shipping", () => {
+    cy.validateShippingFlow({
+      validar: "frete",
+      nome: "Marcos",
+      sobrenome: "Montenegro",
+      cep: "74495220",
+    });
+  });
+
+  it("validar price", () => {
+    cy.validateShippingFlow({
+      validar: "preço",
+      nome: "Marcos",
+      sobrenome: "Montenegro",
+      cep: "74495220",
+    });
+  });
 });
