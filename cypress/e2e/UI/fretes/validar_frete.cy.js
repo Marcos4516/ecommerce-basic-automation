@@ -8,6 +8,7 @@ describe("Validar fretes - desktop", () => {
     cy.loginUser({
       user: usuario,
       password: senha,
+      versao: "desktop"
     });
   });
 
