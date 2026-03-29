@@ -19,3 +19,5 @@ import './commands'
 // Import commands e2e:
 import './fretes/frete'
 import './login/login'
+import './index'
+import './compra/finalizar_compra'

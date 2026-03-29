@@ -25,17 +25,5 @@ Cypress.Commands.add("validateShippingFlow", (parms) => {
   }
 });
 
-Cypress.Commands.add("goToShipping", () => {
-  cy.location("pathname").should("eq", "/inventory.html");
-  cy.get("#add-to-cart-sauce-labs-backpack")
-    .first()
-    .should("have.text", "Add to cart")
-    .and("be.visible")
-    .click();
-  cy.get(".shopping_cart_link").scrollIntoView().click();
-  cy.location("pathname").should("eq", "/cart.html");
-  cy.log(`Chegou na página do carrinho!`);
-  cy.get('[data-test="checkout"]').should("be.visible").click();
-  cy.location("pathname").should("eq", "/checkout-step-one.html");
-  cy.log(`Chegou no checkout!`);
-});
+
+
