@@ -19,3 +19,19 @@ Cypress.Commands.add("loginUser", (parms) => {
     cy.get("#login-button").should("be.visible").click();
   }
 });
+
+Cypress.Commands.add("loginEmpty", () => {
+  cy.visit("/");
+  cy.get('[data-test="login-button"]');
+  cy.get(".error-message-container").should("be.visible");
+  cy.log(`informatico de erro apresentou na tela!`);
+});
+
+Cypress.Commands.add("loginIcorrect", () => {
+  cy.visit("/");
+  cy.visit("/");
+  cy.get("#user-name").should("be.visible").type("incorreto");
+  cy.get("#password").should("be.visible").type("incorreto");
+  cy.get("#login-button").should("be.visible").click();
+  cy.get('[data-test="error"]').should("be.visible");
+});
